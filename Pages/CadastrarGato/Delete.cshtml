@@ -1,0 +1,52 @@
+@page
+@model Gestao.Pages.CadastrarGato.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Excluir Registro</h1>
+
+<h3>Excluir registro?</h3>
+<div>
+    <h4>Gato</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.CpfTutor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.CpfTutor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Idade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Idade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.DataNascimento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.DataNascimento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Raca.DescricaoRaca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Raca.DescricaoRaca)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Gato.Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-page="./Index">Retornar</a>
+    </form>
+</div>

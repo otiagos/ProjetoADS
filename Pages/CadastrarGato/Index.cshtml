@@ -1,0 +1,60 @@
+@page
+@model Gestao.Pages.CadastrarGato.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Novo Gato</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato[0].CpfTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato[0].Idade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato[0].DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato[0].Raca.DescricaoRaca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Gato) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raca.DescricaoRaca)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Atualizar</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

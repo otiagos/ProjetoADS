@@ -1,0 +1,49 @@
+@page
+@model Gestao.Pages.CadastrarGato.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Gato</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.CpfTutor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.CpfTutor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Idade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Idade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.DataNascimento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.DataNascimento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato.Raca.DescricaoRaca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gato.Raca.DescricaoRaca)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Gato.Id">Atualizar</a> |
+    <a asp-page="./Index">Retornar</a>
+</div>

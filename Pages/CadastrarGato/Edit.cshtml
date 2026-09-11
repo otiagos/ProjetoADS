@@ -1,0 +1,62 @@
+@page
+@model Gestao.Pages.CadastrarGato.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Gato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Gato.CpfTutor" class="control-label"></label>
+                <input asp-for="Gato.CpfTutor" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Gato.CpfTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Gato.Nome" class="control-label"></label>
+                <input asp-for="Gato.Nome" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Gato.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Gato.Idade" class="control-label"></label>
+                <input asp-for="Gato.Idade" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Gato.Idade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gato.DataNascimento" class="control-label"></label>
+                <input asp-for="Gato.DataNascimento" class="form-control" />
+                <span asp-validation-for="Gato.DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Gato.IdRaca" class="control-label"></label>
+                <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true">
+                    <option value="">-- Selecione --</option>
+                </select>
+                <span asp-validation-for="Gato.IdRaca" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Gato.Id" />
+            <input type="hidden" asp-for="Gato.IdTutor" />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Retornar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
