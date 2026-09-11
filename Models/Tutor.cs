@@ -5,24 +5,24 @@ namespace Gestao.Models;
 
 public class Tutor : Pessoa
 {
-	[Required(ErrorMessage = "O campo CPF Tutor é obrigatório")]
+	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	[CpfValido(ErrorMessage = "CPF inválido")]
 	[Display(Name = "CPF Tutor:")]
 	public string? CpfTutor { get; set; }
 
-	[Required(ErrorMessage = "O campo Telefone é obrigatório")]
+	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	[Display(Name = "Telefone:")]
 	public string? Telefone { get; set; }
 
 	[Display(Name = "Endereço:")]
 	public string? Endereco { get; set; }
 
-	[Required(ErrorMessage = "O campo Data de Nascimento é obrigatório")]
+	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	[Display(Name = "Data de Nascimento:")]
 	[DataType(DataType.Date)]
 	public DateTime DataNascimento { get; set; }
 
-	[Required(ErrorMessage = "O campo E-mail é obrigatório")]
+	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	[EmailAddress(ErrorMessage = "Informe um endereço de e-mail válido")]
 	[Display(Name = "E-mail:")]
 	public string? Email { get; set; }
