@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Gestao.Models.Validacoes;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Gestao.Models;
@@ -6,6 +7,7 @@ namespace Gestao.Models;
 public class Gato : Animal
 {
 	[Display(Name = "CPF Tutor:")]
+	[CpfValido(ErrorMessage = "CPF inválido")]
 	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	public string? CpfTutor { get; set; }
 
