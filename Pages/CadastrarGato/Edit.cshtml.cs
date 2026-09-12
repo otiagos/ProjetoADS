@@ -35,11 +35,9 @@ namespace Gestao.Pages.CadastrarGato
             {
                 return NotFound();
             }
-	    PopulateDropdowns();
+	        PopulateDropdowns();
 
             Gato = gato;
-
-	    Gato.IdRaca = 0;
 
             return Page();
         }
@@ -48,7 +46,7 @@ namespace Gestao.Pages.CadastrarGato
         {
             if (!ModelState.IsValid)
             {
-		PopulateDropdowns();
+		        PopulateDropdowns();
                 return Page();
             }
 

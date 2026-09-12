@@ -39,9 +39,7 @@
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="Gato.IdRaca" class="control-label"></label>
-                <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true">
-                    <option value="">-- Selecione --</option>
-                </select>
+                <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true"></select>
                 <span asp-validation-for="Gato.IdRaca" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Gato.Id" />
