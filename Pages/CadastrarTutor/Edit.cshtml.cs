@@ -7,17 +7,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao.Data;
+using Gestao.Services;
 using Gestao.Models;
 
 namespace Gestao.Pages.CadastrarTutor
 {
     public class EditModel : PageModel
     {
-        private readonly Gestao.Data.GestaoContext _context;
+        private readonly GestaoContext _context;
+        private readonly TutorService _tutorService; 
 
-        public EditModel(Gestao.Data.GestaoContext context)
+        public EditModel(GestaoContext context, TutorService tutorService)
         {
             _context = context;
+            _tutorService = tutorService;
         }
 
         [BindProperty]
@@ -46,12 +49,10 @@ namespace Gestao.Pages.CadastrarTutor
                 return Page();
             }
 
-            var cpfLimpo = new string(Tutor.CpfTutor!.Where(char.IsDigit).ToArray());
-            var existe = await _context.Tutor.AnyAsync(t => t.CpfTutor == cpfLimpo && t.Id != Tutor.Id);
-
-            if (existe)
+            var tutor = await _tutorService.BuscarPorCpfAsync(Tutor.CpfTutor);
+            if (tutor != null)
             {
-                ModelState.AddModelError("Tutor.CpfTutor", "CPF já cadastrado");
+                ModelState.AddModelError("Tutor.CpfTutor", "CPF já está cadastrado");
                 return Page();
             }
 

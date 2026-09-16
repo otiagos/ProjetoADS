@@ -7,17 +7,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Gestao.Data;
 using Gestao.Models;
+using Gestao.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gestao.Pages.CadastrarGato
 {
     public class CreateModel : PageModel
     {
-        private readonly Gestao.Data.GestaoContext _context;
-
-        public CreateModel(Gestao.Data.GestaoContext context)
+        private readonly GestaoContext _context;
+        private readonly TutorService _tutorService;
+        
+        public CreateModel(GestaoContext context, TutorService tutorService)
         {
             _context = context;
+            _tutorService = tutorService;
         }
 
         public IActionResult OnGet()
@@ -37,16 +40,16 @@ namespace Gestao.Pages.CadastrarGato
                 return Page();
             }
 
-            var cpfLimpo = new string(Gato.CpfTutor!.Where(char.IsDigit).ToArray());
-            var tutor = await _context.Tutor.FirstOrDefaultAsync(t => t.CpfTutor == cpfLimpo);
-
+            var tutor = await _tutorService.BuscarPorCpfAsync(Gato.CpfTutor);
             if (tutor == null)
             {
-                ModelState.AddModelError("Gato.CpfTutor", "CPF do tutor inexistente");
+                ModelState.AddModelError("Gato.CpfTutor", "Tutor não cadastrado com o CPF informado");
+                PopulateDropdowns();
+                return Page();
             }
 
             Gato.IdTutor = tutor!.Id;
-
+            
             _context.Gato.Add(Gato);
             await _context.SaveChangesAsync();
 

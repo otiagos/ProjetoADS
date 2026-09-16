@@ -13,11 +13,13 @@ namespace Gestao.Pages.CadastrarGato
 {
     public class EditModel : PageModel
     {
-        private readonly Gestao.Data.GestaoContext _context;
+        private readonly GestaoContext _context;
+        private readonly Services.TutorService _tutorService;
 
-        public EditModel(Gestao.Data.GestaoContext context)
+        public EditModel(Gestao.Data.GestaoContext context, Services.TutorService tutorService)
         {
             _context = context;
+            _tutorService = tutorService;
         }
 
         [BindProperty]
@@ -50,17 +52,16 @@ namespace Gestao.Pages.CadastrarGato
                 return Page();
             }
 
-            var cpfLimpo = new string(Gato.CpfTutor!.Where(char.IsDigit).ToArray());
-            var tutor = await _context.Tutor.FirstOrDefaultAsync(t => t.CpfTutor == cpfLimpo);
+            var tutor = await _tutorService.BuscarPorCpfAsync(Gato.CpfTutor);
 
             if (tutor == null)
             {
-                ModelState.AddModelError("Gato.CpfTutor", "Não foi encontrado nenhum tutor com este CPF");
+                ModelState.AddModelError("Gato.CpfTutor", "Tutor não encontrado com o CPF informado");
                 PopulateDropdowns();
                 return Page();
             }
 
-            Gato.Id = tutor.Id;
+            Gato.IdTutor = tutor.Id;
 
             _context.Attach(Gato).State = EntityState.Modified;
 
@@ -85,9 +86,8 @@ namespace Gestao.Pages.CadastrarGato
 
         public async Task<JsonResult> OnGetVerificarTutorExisteAsync(string cpf)
         {
-            var cpfLimpo = new string((cpf ?? "").Where(char.IsDigit).ToArray());
-            var existe = _context.Tutor.AnyAsync(t => t.CpfTutor == cpfLimpo);
-            return new JsonResult(new { existe });
+            var tutor = await _tutorService.BuscarPorCpfAsync(cpf);
+            return new JsonResult(new { existe = tutor != null });
         }
 
         private bool GatoExists(int id)

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Gestao.Services;
 using Gestao.Data;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<GestaoContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("GestaoContext") ?? throw new InvalidOperationException("Connection string 'GestaoContext' not found.")));
+builder.Services.AddScoped<TutorService>();
 
 var app = builder.Build();
 

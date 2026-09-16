@@ -51,26 +51,26 @@
     </div>
 </div>
 
+<div>
+    <a asp-page="./Index">Retornar</a>
+</div>
+
 <script>
     document.getElementById('Gato_CpfTutor').addEventListener('blur', async function () {
        const cpf = this.value.trim();
        const msg = document.getElementById('tutorMsg');
-        msg.textContent = '';
+       msg.textContent = '';
         
-        if (!cpf) return;
+       if (!cpf) return;
         
-        const resp = await fetch(`?handler=VerificarTutorExiste&cpf=${encodeURIComponent(cpf)}`);
-        const dados = await resp.json();
+       const resp = await fetch(`?handler=VerificarTutorExiste&cpf=${encodeURIComponent(cpf)}`);
+       const dados = await resp.json();
         
-        if (!dados.existe) {
-            msg.textContent = 'Tutor não encontrado com o CPF informado';
-        }
+       if (!dados.existe) {
+           msg.textContent = 'Tutor não encontrado com o CPF informado';
+       }
     });
 </script>
-
-<div>
-    <a asp-page="./Index">Retornar</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

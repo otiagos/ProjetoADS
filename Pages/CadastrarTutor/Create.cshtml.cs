@@ -12,11 +12,13 @@ namespace Gestao.Pages.CadastrarTutor
 {
     public class CreateModel : PageModel
     {
-        private readonly Gestao.Data.GestaoContext _context;
+        private readonly GestaoContext _context;
+        private readonly Services.TutorService _tutorService;
 
-        public CreateModel(Gestao.Data.GestaoContext context)
+        public CreateModel(GestaoContext context, Services.TutorService tutorService)
         {
             _context = context;
+            _tutorService = tutorService;
         }
 
         public IActionResult OnGet()
@@ -31,6 +33,13 @@ namespace Gestao.Pages.CadastrarTutor
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+
+            var tutor = await _tutorService.BuscarPorCpfAsync(Tutor.CpfTutor);
+            if (tutor != null)
+            {
+                ModelState.AddModelError("Tutor.CpfTutor", "CPF já está cadastrado");
                 return Page();
             }
 
