@@ -289,6 +289,7 @@
 /home/tiago/Gestao/obj/Debug/net10.0/Gestao.MvcApplicationPartsAssemblyInfo.cache
 /home/tiago/Gestao/obj/Debug/net10.0/Gestao.RazorAssemblyInfo.cache
 /home/tiago/Gestao/obj/Debug/net10.0/Gestao.RazorAssemblyInfo.cs
+/home/tiago/Gestao/obj/Debug/net10.0/Gestao.sourcelink.json
 /home/tiago/Gestao/obj/Debug/net10.0/rjimswa.dswa.cache.json
 /home/tiago/Gestao/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
 /home/tiago/Gestao/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
@@ -370,4 +371,3 @@
 /home/tiago/Gestao/obj/Debug/net10.0/Gestao.pdb
 /home/tiago/Gestao/obj/Debug/net10.0/Gestao.genruntimeconfig.cache
 /home/tiago/Gestao/obj/Debug/net10.0/ref/Gestao.dll
-/home/tiago/Gestao/obj/Debug/net10.0/Gestao.sourcelink.json

@@ -50,6 +50,18 @@ namespace Gestao.Pages.CadastrarGato
                 return Page();
             }
 
+            var cpfLimpo = new string(Gato.CpfTutor!.Where(char.IsDigit).ToArray());
+            var tutor = await _context.Tutor.FirstOrDefaultAsync(t => t.CpfTutor == cpfLimpo);
+
+            if (tutor == null)
+            {
+                ModelState.AddModelError("Gato.CpfTutor", "Não foi encontrado nenhum tutor com este CPF");
+                PopulateDropdowns();
+                return Page();
+            }
+
+            Gato.Id = tutor.Id;
+
             _context.Attach(Gato).State = EntityState.Modified;
 
             try
@@ -69,6 +81,13 @@ namespace Gestao.Pages.CadastrarGato
             }
 
             return RedirectToPage("./Index");
+        }
+
+        public async Task<JsonResult> OnGetVerificarTutorExisteAsync(string cpf)
+        {
+            var cpfLimpo = new string((cpf ?? "").Where(char.IsDigit).ToArray());
+            var existe = _context.Tutor.AnyAsync(t => t.CpfTutor == cpfLimpo);
+            return new JsonResult(new { existe });
         }
 
         private bool GatoExists(int id)
