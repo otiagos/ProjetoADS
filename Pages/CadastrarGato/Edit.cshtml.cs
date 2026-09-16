@@ -76,9 +76,9 @@ namespace Gestao.Pages.CadastrarGato
             return _context.Gato.Any(e => e.Id == id);
         }
 
-	private void PopulateDropdowns()
-	{
-	    ViewData["IdRaca"] = new SelectList(_context.Raca, "Id", "DescricaoRaca");
-	}
+	    private void PopulateDropdowns()
+	    {
+	        ViewData["IdRaca"] = new SelectList(_context.Raca, "Id", "DescricaoRaca");
+	    }
     }
 }

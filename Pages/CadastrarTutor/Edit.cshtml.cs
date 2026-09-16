@@ -46,6 +46,15 @@ namespace Gestao.Pages.CadastrarTutor
                 return Page();
             }
 
+            var cpfLimpo = new string(Tutor.CpfTutor!.Where(char.IsDigit).ToArray());
+            var existe = await _context.Tutor.AnyAsync(t => t.CpfTutor == cpfLimpo && t.Id != Tutor.Id);
+
+            if (existe)
+            {
+                ModelState.AddModelError("Tutor.CpfTutor", "CPF já cadastrado");
+                return Page();
+            }
+
             _context.Attach(Tutor).State = EntityState.Modified;
 
             try
@@ -65,6 +74,13 @@ namespace Gestao.Pages.CadastrarTutor
             }
 
             return RedirectToPage("./Index");
+        }
+
+        public async Task<JsonResult> OnGetVerificarCpfDuplicadoAsync(string cpf, int id)
+        {
+            var cpfLimpo = new string((cpf ?? "").Where(char.IsDigit).ToArray());
+            var existe = await _context.Tutor.AnyAsync(t => t.CpfTutor == cpfLimpo && t.Id != id);
+            return new JsonResult(new { existe });
         }
 
         private bool TutorExists(int id)
