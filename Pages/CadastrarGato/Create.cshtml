@@ -37,21 +37,18 @@
             </div>
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Gato.IdRaca" class="control-label"></label><br>
-                <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true">
-                    <option value="">-- Selecione --</option>
-                </select>
-                <span asp-validation-for="Gato.IdRaca" class="text-danger"></span>
+                <label asp-for="Gato.IdRaca" class="control-label"></label>
+                    <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true">
+                        <option value="">-- Selecione --</option>
+                    </select>
+                <span asp-validation-for="Gato.IdRaca" class="text-danger"></span><br/>
             </div>
             <div class="form-group">
-                <button type="submit" class="botaoSalvar">Salvar</button>
+                <button type="submit" class="btn btn-success">Salvar</button> | 
+                <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Page("./Index")'">Retornar</button>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <button type="button" class="botaoRetornar" onclick="location.href='@Url.Page("/Index")'">Retornar</button>
 </div>
 
 @section Scripts {

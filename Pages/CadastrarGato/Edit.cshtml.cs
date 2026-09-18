@@ -16,7 +16,7 @@ namespace Gestao.Pages.CadastrarGato
         private readonly GestaoContext _context;
         private readonly Services.TutorService _tutorService;
 
-        public EditModel(Gestao.Data.GestaoContext context, Services.TutorService tutorService)
+        public EditModel(GestaoContext context, Services.TutorService tutorService)
         {
             _context = context;
             _tutorService = tutorService;

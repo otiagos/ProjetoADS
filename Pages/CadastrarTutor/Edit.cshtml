@@ -45,12 +45,13 @@
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="Tutor.Email" class="control-label"></label>
-                <input asp-for="Tutor.Email" class="form-control" aria-required="true"/>
+                <input asp-for="Tutor.Email" class="form-control" aria-required="true"/><br/>
                 <span asp-validation-for="Tutor.Email" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Tutor.Id" />
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-page="./Index" class="btn btn-secondary">Retornar</a>
             </div>
         </form>
     </div>
@@ -73,10 +74,6 @@
        }
     });
 </script>
-
-<div>
-    <a asp-page="./Index">Retornar</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

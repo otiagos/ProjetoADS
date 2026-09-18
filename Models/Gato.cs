@@ -6,25 +6,25 @@ namespace Gestao.Models;
 
 public class Gato : Animal
 {
-	[Display(Name = "CPF Tutor:")]
+	[Display(Name = "CPF Tutor")]
 	[CpfValido(ErrorMessage = "CPF inválido")]
 	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	public string? CpfTutor { get; set; }
 
-	[Display(Name = "Nome:")]
+	[Display(Name = "Nome")]
 	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	public string? Nome { get; set; }
 
-	[Display(Name = "Idade:")]
+	[Display(Name = "Idade")]
 	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	public int Idade { get; set; }
 
-	[Display(Name = "Data de Nascimento:")]
+	[Display(Name = "Data de Nascimento")]
 	[Required(ErrorMessage = "O campo {0} é obrigatório")]
 	[DataType(DataType.Date)]
 	public DateTime DataNascimento { get; set; }
 	
-	[Display(Name = "Raça:")]
+	[Display(Name = "Raça")]
 	[Range(1, int.MaxValue, ErrorMessage = "Selecione uma raça")]
 	public int IdRaca { get; set; }
 

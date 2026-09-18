@@ -40,19 +40,16 @@
                 <span class="text-danger">*</span>
                 <label asp-for="Gato.IdRaca" class="control-label"></label>
                 <select asp-for="Gato.IdRaca" asp-items="ViewBag.IdRaca" class="form-control" aria-required="true"></select>
-                <span asp-validation-for="Gato.IdRaca" class="text-danger"></span>
+                <span asp-validation-for="Gato.IdRaca" class="text-danger"></span><br/>
             </div>
             <input type="hidden" asp-for="Gato.Id" />
             <input type="hidden" asp-for="Gato.IdTutor" />
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-page="./Index" class="btn btn-secondary">Retornar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Retornar</a>
 </div>
 
 <script>
